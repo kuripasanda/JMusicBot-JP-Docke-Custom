@@ -6,7 +6,7 @@ WORKDIR /build
 RUN apk update &&\
     apk add --no-cache curl
 
-RUN curl -SLo JMusicBot.jar https://github.com/Cosgy-Dev/JMusicBot-JP/releases/download/${JMUSICBOT_VERSION}/JMusicBot-${JMUSICBOT_VERSION}-All.jar
+RUN curl -SLo JMusicBot-Custom.jar https://github.com/kuripasanda/JMusicBot-JP-Custom/releases/download/${JMUSICBOT_VERSION}/JMusicBot-Customized-${JMUSICBOT_VERSION}-All.jar
 
 
 FROM adoptopenjdk/openjdk11:alpine-jre
@@ -16,4 +16,4 @@ COPY --from=builder /build .
 RUN apk update &&\
     apk add --no-cache ffmpeg python3
 
-ENTRYPOINT [ "java", "-Dnogui=true", "-jar", "JMusicBot.jar" ]
+ENTRYPOINT [ "java", "-Dnogui=true", "-jar", "JMusicBot-Custom.jar" ]
